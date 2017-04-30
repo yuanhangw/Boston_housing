@@ -11840,28 +11840,8 @@ div#notebook {
 <div class="output_area">
 <div class="prompt"></div>
 
-<div class="output_subarea output_stream output_stderr output_text">
-<pre>/Users/yuanhangw/anaconda3/envs/py2/lib/python2.7/site-packages/sklearn/cross_validation.py:44: DeprecationWarning: This module was deprecated in version 0.18 in favor of the model_selection module into which all the refactored classes and functions are moved. Also note that the interface of the new CV iterators are different from that of this module. This module will be removed in 0.20.
-  &#34;This module will be removed in 0.20.&#34;, DeprecationWarning)
-</pre>
-</div>
-</div>
-
-<div class="output_area">
-<div class="prompt"></div>
-
 <div class="output_subarea output_stream output_stdout output_text">
 <pre>Boston housing dataset has 489 data points with 4 variables each.
-</pre>
-</div>
-</div>
-
-<div class="output_area">
-<div class="prompt"></div>
-
-<div class="output_subarea output_stream output_stderr output_text">
-<pre>/Users/yuanhangw/anaconda3/envs/py2/lib/python2.7/site-packages/sklearn/learning_curve.py:23: DeprecationWarning: This module was deprecated in version 0.18 in favor of the model_selection module into which all the functions are moved. This module will be removed in 0.20
-  DeprecationWarning)
 </pre>
 </div>
 </div>
@@ -13914,7 +13894,8 @@ Y/yGJT1jjDF+w5KeMcYYv2FJzxhjjN/4f3yns1CCgIDmAAAAAElFTkSuQmCC
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p><strong>Answer: </strong> K-fold cv split the data into K pieces, and generates K sets of train/validation splits for cross validation purposes. Having a cross validation set for Grid search make sure the search result can be measured against a validation set.</p>
+<p><strong>Answer: </strong> K-fold cv split the data into K pieces, K-1 pieces of the data is used the for training and the remaining piece used for validation. This process is looped for all possible K combination of training set and validation set, the results are averaged to provide a model performance measurement.<br>
+Compare to normal training/validation split and holdout method, K-fold CV does not waste much data, the averaged performance measurement is more robust than the measured using just one set of training/validation data.</p>
 
 </div>
 </div>
@@ -14156,7 +14137,9 @@ Predicted selling price for Client 3&#39;s home: $854,700.00
 </tr>
 </tbody>
 </table>
-<blockquote><p>Looks reasonable to me ☜(^▽^)☞</p>
+<blockquote><p>Client 3's property has the highest total number of room, the lowest neighbourhood poverty level and the lowest student to teacher ratio amongst the three, therefore it commands the highest prices amongs the three predictions. The predicted price 854,700.00, is very close to the Max house price in the dataset which is 1,024,800.00.</p>
+<p>On the contrary, Client 2's property has the lowest total number of room, the highest neighbourhood proverty level and the highest student to teacher ratio amongst the three cases. Correspondingly, the predicted price is the lowest amongst the three. The predicted price 218,540.00 is more towards the lower end of the price spectrum with a mean value of 454,342.94 and a mininum of 105,000.00.</p>
+<p>Client 1' property's features stuck at the middle, the predicted value is close to the mean value in the dataset.</p>
 </blockquote>
 
 </div>
